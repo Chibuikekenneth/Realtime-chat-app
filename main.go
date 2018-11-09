@@ -119,7 +119,7 @@ func wsPage(res http.ResponseWriter, req *http.Request) {
 		http.NotFound(res, req)
 		return
 	}
-	client := &Client{id: uuid.NewV4().String(), socket: conn, send: make(chan []byte)}
+	client := &Client{id: uuid.Must(uuid.NewV4()).String(), socket: conn, send: make(chan []byte)}
 
 	manager.register <- client
 
